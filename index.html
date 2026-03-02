@@ -323,10 +323,10 @@
     margin-top: 36px;
   }
   .video-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     gap: 14px;
-    max-width: 900px;
+    justify-content: center;
+    max-width: 500px;
     margin: 0 auto;
   }
   .video-card {
@@ -336,17 +336,50 @@
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: all 0.3s;
+    flex: 1;
+    max-width: 240px;
   }
   .video-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
   .video-card video {
     width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
     display: block;
     background: #000;
   }
-  .video-card.portrait video { aspect-ratio: 9/16; object-fit: cover; }
-  .video-card.landscape video { aspect-ratio: 16/9; object-fit: cover; }
   .video-card .video-info { padding: 10px 12px; }
   .video-card .video-info p { font-size: 12px; color: var(--text2); }
+
+  /* Partners Section */
+  .partners-section { background: var(--surface2); border-top: 1px solid var(--border); }
+  .partner-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .partner-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+  }
+  .partner-card:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); }
+  .partner-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+  .partner-card p { font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 12px; }
+  .partner-highlight {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--accent-light);
+    border: 1px solid rgba(196,122,58,0.15);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+  }
 
   /* About */
   .about-grid {
@@ -464,7 +497,8 @@
     .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
     .gallery-item img { height: 130px; }
     .gallery-label { padding: 8px 10px; font-size: 11px; }
-    .video-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .video-grid { gap: 8px; max-width: 100%; }
+    .partner-cards { grid-template-columns: 1fr; }
     .video-card .video-info { padding: 8px 10px; }
     .video-card .video-info p { font-size: 11px; }
     .price-banner { padding: 24px 16px; }
@@ -476,7 +510,7 @@
   @media (max-width: 420px) {
     .services-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; }
-    .video-grid { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .video-grid { gap: 6px; }
     .hero-stats { gap: 10px; }
     .hero-stat { padding: 8px 12px; }
     .hero-stat .val { font-size: 16px; }
@@ -735,23 +769,17 @@
       <span class="zh">视频作品 -- 无人机 & 电影级画面</span>
     </div>
     <div class="video-grid">
-      <div class="video-card portrait">
+      <div class="video-card">
         <video controls muted preload="metadata" playsinline>
-          <source src="摄影集/日落无人机UCSB.mp4" type="video/mp4">
+          <source src="摄影集/ucsb-sunset-web.mp4" type="video/mp4">
         </video>
         <div class="video-info"><p><span class="en">UCSB Sunset Drone</span><span class="zh">UCSB 日落航拍</span></p></div>
       </div>
-      <div class="video-card portrait">
+      <div class="video-card">
         <video controls muted preload="metadata" playsinline>
-          <source src="摄影集/12月30日圣地亚哥卷积云夕阳.mp4" type="video/mp4">
+          <source src="摄影集/sandiego-sunset-web.mp4" type="video/mp4">
         </video>
         <div class="video-info"><p><span class="en">San Diego Sunset</span><span class="zh">圣地亚哥夕阳</span></p></div>
-      </div>
-      <div class="video-card landscape">
-        <video controls muted preload="metadata" playsinline>
-          <source src="摄影集/UCSB停车场5楼夕阳.mp4" type="video/mp4">
-        </video>
-        <div class="video-info"><p><span class="en">UCSB Rooftop 4K</span><span class="zh">UCSB 楼顶 4K</span></p></div>
       </div>
     </div>
   </div>
@@ -804,6 +832,28 @@
           <h4><span class="en">Solo Business</span><span class="zh">一人公司</span></h4>
           <p><span class="en">Direct communication</span><span class="zh">直接对接</span></p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners -->
+<section id="partners" class="partners-section">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-tag"><span class="en">Looking for Partners</span><span class="zh">寻找合作伙伴</span></div>
+      <h2><span class="en">Partnership Opportunities</span><span class="zh">合作机会</span></h2>
+    </div>
+    <div class="partner-cards">
+      <div class="partner-card">
+        <h3><span class="en">DoorDash Account Partner</span><span class="zh">DoorDash 账号合作</span></h3>
+        <p><span class="en">Looking for a partner who can share a DoorDash delivery account. I'll handle all the deliveries -- you earn passive income from my work.</span><span class="zh">寻找一位可以出租 DoorDash 外卖账号的合作伙伴。我来跑单，你躺着赚钱。</span></p>
+        <div class="partner-highlight"><span class="en">You get 15% of my delivery income</span><span class="zh">你获得我配送收入的 15%</span></div>
+      </div>
+      <div class="partner-card">
+        <h3><span class="en">Business Entity Partner</span><span class="zh">公司账户合作</span></h3>
+        <p><span class="en">I'm developing a digital asset tutorial website and need a partner with a US-registered business entity and merchant account to process payments.</span><span class="zh">我正在开发一个虚拟资产教程类网站，需要一位拥有美国注册公司和公司收款账户的合作伙伴。</span></p>
+        <div class="partner-highlight"><span class="en">Revenue share -- let's talk</span><span class="zh">收益分成——详聊</span></div>
       </div>
     </div>
   </div>
