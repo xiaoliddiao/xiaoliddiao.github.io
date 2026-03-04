@@ -104,26 +104,33 @@
     gap: 40px;
     align-items: center;
   }
-  .hero-left { text-align: center; }
+  .hero-left {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+  }
   .hero-avatar {
     width: 110px; height: 110px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--surface);
     box-shadow: var(--shadow);
-    margin-bottom: 12px;
   }
   .hero-badge {
+    position: absolute;
+    top: -2px;
+    right: -12px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 5px 14px;
+    gap: 4px;
+    padding: 3px 10px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    font-size: 12px;
+    border-radius: 14px;
+    font-size: 11px;
     color: var(--green);
     box-shadow: var(--shadow);
+    white-space: nowrap;
   }
   .hero-badge .dot {
     width: 6px; height: 6px;
@@ -166,7 +173,6 @@
   .hero-stat .val { font-size: 20px; font-weight: 700; color: var(--accent); }
   .hero-stat .lbl { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.8px; }
 
-  .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
   .btn {
     display: inline-flex;
     align-items: center;
@@ -186,12 +192,6 @@
     box-shadow: 0 3px 12px rgba(196,122,58,0.25);
   }
   .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 5px 20px rgba(196,122,58,0.35); }
-  .btn-secondary {
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
   /* Quick services strip under hero */
   .quick-services {
@@ -477,43 +477,67 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    nav { padding: 10px 16px; }
+    nav { padding: 8px 14px; }
     .nav-links { display: none; }
-    .hero { padding: 70px 16px 30px; min-height: auto; }
-    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 20px; }
-    .hero-right .hero-desc { margin-left: auto; margin-right: auto; }
-    .hero-stats { justify-content: center; }
-    .hero-cta { justify-content: center; }
-    .quick-services { justify-content: center; }
-    .hero-avatar { width: 80px; height: 80px; }
-    section { padding: 40px 16px; }
-    .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .service-img { height: 120px; }
-    .service-body { padding: 12px; }
-    .service-body h3 { font-size: 14px; }
-    .service-body p { font-size: 12px; margin-bottom: 8px; }
-    .about-grid { grid-template-columns: 1fr; gap: 28px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 28px; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .gallery-item img { height: 130px; }
-    .gallery-label { padding: 8px 10px; font-size: 11px; }
+    .hero { padding: 56px 14px 16px; min-height: auto; }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 12px; }
+    .hero-left { margin-bottom: 0; }
+    .hero-avatar { width: 72px; height: 72px; }
+    .hero-badge { font-size: 10px; padding: 2px 8px; top: -4px; right: -8px; }
+    .hero-right h1 { font-size: 24px; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .hero-right .hero-desc { font-size: 13px; margin-bottom: 12px; line-height: 1.6; }
+    .hero-stats { justify-content: center; gap: 8px; margin-bottom: 12px; }
+    .hero-stat { padding: 6px 12px; border-radius: 8px; }
+    .hero-stat .val { font-size: 16px; }
+    .hero-stat .lbl { font-size: 10px; }
+    .quick-services { justify-content: center; gap: 5px; margin-top: 10px; }
+    .qs-tag { padding: 3px 8px; font-size: 10px; }
+    section { padding: 28px 14px; }
+    .section-header { margin-bottom: 20px; }
+    .section-header h2 { font-size: 20px; }
+    .section-tag { font-size: 10px; padding: 3px 10px; margin-bottom: 6px; }
+    .services-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .service-img { height: 100px; }
+    .service-body { padding: 10px; }
+    .service-body h3 { font-size: 13px; margin-bottom: 4px; }
+    .service-body p { font-size: 11px; margin-bottom: 6px; line-height: 1.5; }
+    .service-tags span { font-size: 10px; padding: 2px 6px; }
+    .about-grid { grid-template-columns: 1fr; gap: 20px; }
+    .about-avatar { width: 48px; height: 48px; margin-bottom: 8px; }
+    .about-text h3 { font-size: 18px; margin-bottom: 8px; }
+    .about-text p { font-size: 13px; margin-bottom: 8px; }
+    .about-cards { gap: 8px; }
+    .about-card { padding: 14px; border-radius: 10px; }
+    .about-card h4 { font-size: 13px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+    .contact-info h3 { font-size: 18px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .gallery-item img { height: 110px; }
+    .gallery-label { padding: 6px 8px; font-size: 10px; }
     .video-grid { gap: 8px; max-width: 100%; }
-    .partner-cards { grid-template-columns: 1fr; }
-    .video-card .video-info { padding: 8px 10px; }
-    .video-card .video-info p { font-size: 11px; }
-    .price-banner { padding: 24px 16px; }
-    .price-banner .price { font-size: 36px; }
-    .lang-toggle { top: 10px; right: 10px; }
-    .stat-value { font-size: 16px; }
+    .video-card .video-info { padding: 6px 8px; }
+    .video-card .video-info p { font-size: 10px; }
+    .partner-cards { grid-template-columns: 1fr; gap: 10px; }
+    .partner-card { padding: 18px 16px; }
+    .partner-card h3 { font-size: 14px; }
+    .partner-card p { font-size: 12px; }
+    .price-banner { padding: 20px 14px; margin-top: 20px; border-radius: 12px; }
+    .price-banner .price { font-size: 32px; }
+    .price-banner .price-unit { font-size: 16px; }
+    .price-banner .price-note { font-size: 12px; }
+    .lang-toggle { top: 8px; right: 8px; }
+    .lang-btn { padding: 5px 12px; font-size: 12px; }
+    footer { padding: 20px 14px; }
   }
 
-  @media (max-width: 420px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; }
-    .video-grid { gap: 6px; }
-    .hero-stats { gap: 10px; }
-    .hero-stat { padding: 8px 12px; }
-    .hero-stat .val { font-size: 16px; }
+  @media (max-width: 380px) {
+    .hero { padding: 52px 12px 12px; }
+    .hero-right h1 { font-size: 21px; }
+    .services-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .service-img { height: 90px; }
+    .service-body { padding: 8px; }
+    .service-body p { display: none; }
+    .gallery-item img { height: 90px; }
   }
 
   /* Bilingual */
@@ -574,16 +598,6 @@
           <div class="val">B.S.</div>
           <div class="lbl"><span class="en">Engineering</span><span class="zh">工程本科</span></div>
         </div>
-      </div>
-      <div class="hero-cta">
-        <a href="mailto:henan9233@gmail.com" class="btn btn-primary">
-          <span class="en">Email Me</span>
-          <span class="zh">发邮件</span>
-        </a>
-        <a href="#services" class="btn btn-secondary">
-          <span class="en">View Services</span>
-          <span class="zh">查看服务</span>
-        </a>
       </div>
       <div class="quick-services">
         <span class="qs-tag"><span class="en">Tesla Rental</span><span class="zh">特斯拉出租</span></span>
@@ -924,10 +938,19 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.lang-btn')[lang === 'zh' ? 1 : 0].classList.add('active');
 }
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
+
+// Auto-detect Chinese browser/system language
+(function() {
+  var lang = navigator.language || navigator.userLanguage || '';
+  if (lang.toLowerCase().indexOf('zh') === 0) {
+    setLang('zh');
+  }
+})();
+
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
 }, { threshold: 0.08 });
-document.querySelectorAll('.service-card, .gallery-item, .about-card, .video-card').forEach(el => {
+document.querySelectorAll('.service-card, .gallery-item, .about-card, .video-card, .partner-card').forEach(function(el) {
   el.style.opacity='0'; el.style.transform='translateY(12px)';
   el.style.transition='opacity 0.4s ease, transform 0.4s ease'; obs.observe(el);
 });
